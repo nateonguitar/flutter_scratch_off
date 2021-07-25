@@ -27,6 +27,7 @@ class _PartialReplaceCanvasState extends State<PartialReplaceCanvas> {
   late UI.Image _toApply;
   late Rect _backgroundSize;
   late Rect _toApplySize;
+  List<Offset> _touchPoints = [];
 
   @override
   void initState() {
@@ -60,24 +61,44 @@ class _PartialReplaceCanvasState extends State<PartialReplaceCanvas> {
         child: CircularProgressIndicator(),
       );
     }
-    return Container(
-      color: widget.backgroundColor,
-      child: Stack(
-        children: [
-          SizedBox(
-            width: widget.size.width,
-            height: widget.size.height,
-            child: Image.asset(widget.backgroundAsset),
-          ),
-          CustomPaint(
-            size: widget.size,
-            painter: ImageEditorCustomPainter(
-              background: _background,
-              toApply: _toApply,
+    return GestureDetector(
+      onTapDown: (details) {
+        _addTouchPoint(details.localPosition);
+      },
+      onPanUpdate: (details) {
+        _addTouchPoint(details.localPosition);
+      },
+      child: Container(
+        color: widget.backgroundColor,
+        child: Stack(
+          children: [
+            SizedBox(
+              width: widget.size.width,
+              height: widget.size.height,
+              child: Image.asset(widget.backgroundAsset),
             ),
-          ),
-        ],
+            CustomPaint(
+              size: widget.size,
+              painter: ImageEditorCustomPainter(
+                background: _background,
+                toApply: _toApply,
+                touchPoints: _touchPoints,
+              ),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void _addTouchPoint(Offset offset) {
+    _touchPoints.add(offset);
+    setState(() {});
+  }
+
+  void _undo() {
+    if (_touchPoints.length > 0) {
+    _touchPoints.removeLast();
+    }
   }
 }
