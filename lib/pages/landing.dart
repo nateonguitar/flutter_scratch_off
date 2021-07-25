@@ -13,7 +13,6 @@ class _MyHomePageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[850],
       body: _bodyWidget(),
     );
   }
@@ -31,7 +30,7 @@ class _MyHomePageState extends State<LandingPage> {
               children: [
                 Container(
                   child: ScratchOff(
-                    backgroundColor: Colors.grey,
+                    backgroundColor: Colors.blue,
                     backgroundAsset: _backgroundAsset,
                     toApplyAsset: _toApplyAsset,
                     size: Size(300, 250),
