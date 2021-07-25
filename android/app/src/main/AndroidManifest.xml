@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.image_mask_test">
+    package="com.thedstring.flutter_scratch_off">
    <application
-        android:label="image_mask_test"
+        android:label="flutter_scratch_off"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

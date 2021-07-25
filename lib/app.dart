@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:image_mask_test/pages/landing.dart';
+import 'package:flutter_scratch_off/pages/landing.dart';
 
 class App extends StatelessWidget {
   @override

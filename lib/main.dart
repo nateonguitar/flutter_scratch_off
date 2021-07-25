@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_mask_test/app.dart';
+import 'package:flutter_scratch_off/app.dart';
 
 void main() {
   runApp(App());

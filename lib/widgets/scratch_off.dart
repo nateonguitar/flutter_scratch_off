@@ -4,7 +4,7 @@ import 'dart:ui' as UI;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:image_mask_test/image_editor_custom_painter.dart';
+import 'package:flutter_scratch_off/image_editor_custom_painter.dart';
 
 class ScratchOff extends StatefulWidget {
   final Color backgroundColor;

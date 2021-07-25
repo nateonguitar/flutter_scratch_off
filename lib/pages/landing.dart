@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_mask_test/widgets/scratch_off.dart';
+import 'package:flutter_scratch_off/widgets/scratch_off.dart';
 
 class LandingPage extends StatefulWidget {
   @override
