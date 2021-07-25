@@ -7,13 +7,13 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_scratch_off/image_editor_custom_painter.dart';
 
 class ScratchOff extends StatefulWidget {
+  final Widget child;
   final Color backgroundColor;
-  final String backgroundAsset;
   final String scratcherLayerAsset;
   final Size size;
   ScratchOff({
+    required this.child,
     required this.backgroundColor,
-    required this.backgroundAsset,
     required this.scratcherLayerAsset,
     required this.size,
   });
@@ -23,7 +23,6 @@ class ScratchOff extends StatefulWidget {
 
 class _ScratchOffState extends State<ScratchOff> {
   bool _initialized = false;
-  late UI.Image _background;
   late UI.Image _scratcherLayer;
   List<Offset> _touchPoints = [];
 
@@ -34,7 +33,6 @@ class _ScratchOffState extends State<ScratchOff> {
   }
 
   Future<void> _initAsync() async {
-    _background = await loadImage(widget.backgroundAsset);
     _scratcherLayer = await loadImage(widget.scratcherLayerAsset);
     _initialized = true;
     setState(() {});
@@ -71,12 +69,11 @@ class _ScratchOffState extends State<ScratchOff> {
             SizedBox(
               width: widget.size.width,
               height: widget.size.height,
-              child: Image.asset(widget.backgroundAsset),
+              child: widget.child,
             ),
             CustomPaint(
               size: widget.size,
               painter: ImageEditorCustomPainter(
-                background: _background,
                 scratcherLayer: _scratcherLayer,
                 touchPoints: _touchPoints,
               ),

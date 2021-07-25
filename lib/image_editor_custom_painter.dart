@@ -3,13 +3,11 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 
 class ImageEditorCustomPainter extends CustomPainter {
-  final ui.Image background;
-  final ui.Image toApply;
+  final ui.Image scratcherLayer;
   final List<Offset> touchPoints;
 
   ImageEditorCustomPainter({
-    required this.background,
-    required this.toApply,
+    required this.scratcherLayer,
     required this.touchPoints,
   });
 
@@ -17,8 +15,8 @@ class ImageEditorCustomPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) async {
     canvas.saveLayer(Rect.largest, Paint());
     canvas.drawImageRect(
-      toApply,
-      Rect.fromLTWH(0, 0, toApply.width.toDouble(), toApply.height.toDouble()),
+      scratcherLayer,
+      Rect.fromLTWH(0, 0, scratcherLayer.width.toDouble(), scratcherLayer.height.toDouble()),
       Rect.fromLTWH(0, 0, size.width, size.height),
       Paint(),
     );
