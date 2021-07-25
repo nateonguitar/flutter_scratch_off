@@ -8,7 +8,7 @@ class LandingPage extends StatefulWidget {
 
 class _MyHomePageState extends State<LandingPage> {
   final String _backgroundAsset = 'assets/1.png';
-  final String _toApplyAsset = 'assets/2.png';
+  final String _scratcherLayerAsset = 'assets/2.png';
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<LandingPage> {
                   child: ScratchOff(
                     backgroundColor: Colors.blue,
                     backgroundAsset: _backgroundAsset,
-                    toApplyAsset: _toApplyAsset,
+                    scratcherLayerAsset: _scratcherLayerAsset,
                     size: Size(300, 250),
                   ),
                 ),
