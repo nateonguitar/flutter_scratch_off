@@ -6,27 +6,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image_mask_test/image_editor_custom_painter.dart';
 
-class PartialReplaceCanvas extends StatefulWidget {
+class ScratchOff extends StatefulWidget {
   final Color backgroundColor;
   final String backgroundAsset;
   final String toApplyAsset;
   final Size size;
-  PartialReplaceCanvas({
+  ScratchOff({
     required this.backgroundColor,
     required this.backgroundAsset,
     required this.toApplyAsset,
     required this.size,
   });
   @override
-  _PartialReplaceCanvasState createState() => _PartialReplaceCanvasState();
+  _ScratchOffState createState() => _ScratchOffState();
 }
 
-class _PartialReplaceCanvasState extends State<PartialReplaceCanvas> {
+class _ScratchOffState extends State<ScratchOff> {
   bool _initialized = false;
   late UI.Image _background;
   late UI.Image _toApply;
-  late Rect _backgroundSize;
-  late Rect _toApplySize;
   List<Offset> _touchPoints = [];
 
   @override
@@ -38,8 +36,6 @@ class _PartialReplaceCanvasState extends State<PartialReplaceCanvas> {
   Future<void> _initAsync() async {
     _background = await loadImage(widget.backgroundAsset);
     _toApply = await loadImage(widget.toApplyAsset);
-    _backgroundSize = Rect.fromLTWH(0, 0, _background.width.toDouble(), _background.height.toDouble());
-    _toApplySize = Rect.fromLTWH(0, 0, _toApply.width.toDouble(), _toApply.height.toDouble());
     _initialized = true;
     setState(() {});
   }
@@ -92,13 +88,15 @@ class _PartialReplaceCanvasState extends State<PartialReplaceCanvas> {
   }
 
   void _addTouchPoint(Offset offset) {
-    _touchPoints.add(offset);
-    setState(() {});
-  }
-
-  void _undo() {
-    if (_touchPoints.length > 0) {
-    _touchPoints.removeLast();
+    bool exists = false;
+    for (Offset point in _touchPoints) {
+      if (point == offset) {
+        exists = true;
+      }
+    }
+    if (!exists) {
+      _touchPoints.add(offset);
+      setState(() {});
     }
   }
 }

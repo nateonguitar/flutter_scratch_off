@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_mask_test/widgets/partial_replace_canvas.dart';
+import 'package:image_mask_test/widgets/scratch_off.dart';
 
 class LandingPage extends StatefulWidget {
   @override
@@ -19,22 +19,28 @@ class _MyHomePageState extends State<LandingPage> {
   }
 
   Widget _bodyWidget() {
-    return Center(
-      child: ListView(
-        children: [
-          Row(
-            children: [
-              Container(
-                child: PartialReplaceCanvas(
-                  backgroundColor: Colors.grey,
-                  backgroundAsset: _backgroundAsset,
-                  toApplyAsset: _toApplyAsset,
-                  size: const Size.square(500),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Draw to erase!'),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  child: ScratchOff(
+                    backgroundColor: Colors.grey,
+                    backgroundAsset: _backgroundAsset,
+                    toApplyAsset: _toApplyAsset,
+                    size: Size(300, 250),
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
