@@ -18,7 +18,7 @@ class _MyHomePageState extends State<LandingPage> {
   Widget _bodyWidget() {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Draw to erase!'),
+        title: Text('Scratcher Test'),
         centerTitle: true,
       ),
       body: Center(
@@ -29,7 +29,7 @@ class _MyHomePageState extends State<LandingPage> {
                 Container(
                   child: ScratchOff(
                     child: Image.asset('assets/1.png'),
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Colors.red,
                     scratcherLayerAsset: 'assets/2.png',
                     size: Size(300, 250),
                   ),
